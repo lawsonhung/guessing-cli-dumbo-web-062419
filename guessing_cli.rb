@@ -1,37 +1,48 @@
 # Code your solution here!
+# binding.pry
+require 'pry'
 
 # Prompts the user to guess a number between 1 and 6.
-
-# ?????????????????????? Works with ruby command
-# Error with learn command:
-# Errno::ENOENT:
-# No such file or directory @ rb_sysopen - --format
-
 def run_guessing_game
-    puts "Guess a number between 1 and 6. Type 'exit' to quit."
+    puts "Guess a number between 1 and 6."
 
-    # Error is possibly with gets.chomp method
     user_input = gets.chomp
     correct_number = rand(1..6)
-
-    # puts "Guess: #{user_input}, Correct answer: #{correct_number}"
 
     while user_input != "exit"
         if user_input.to_i == correct_number
             puts "You guessed the correct number!"
+            run_guessing_game
             break
         else
-            puts "The computer guessed #{correct_number}"
-            # break
+            puts "The computer guessed #{correct_number}."
+            run_guessing_game
+            break
         end
-        user_input = gets.chomp
     end
+
     if user_input == "exit"
         puts "Goodbye!"
-    else
-        puts "Goodbye!"
     end
-
 end
 
-run_guessing_game
+# Solution
+# def run_guessing_game
+#     input = ""
+#     while input
+#       puts "Guess a number between 1 and 6."
+#       input = gets.downcase.chomp
+#       random_number = rand(1..6).to_s
+#       case input.chomp
+#       when random_number
+#         puts "You guessed the correct number!"
+#       when 'exit'
+#         puts "Goodbye!"
+#         break
+#       else
+#         puts "The computer guessed #{random_number}."
+#       end
+#     end
+#   end
+
+# run_guessing_game
